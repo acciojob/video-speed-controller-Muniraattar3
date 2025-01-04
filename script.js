@@ -3,6 +3,7 @@ const player = document.querySelector('.player');
 const video = player.querySelector('.player__video');
 const toggle = player.querySelector('.toggle');
 const skipButtons = player.querySelectorAll('[data-skip]');
+const rewindButton = player.querySelector('.rewind'); // Added rewind button
 const ranges = player.querySelectorAll('.player__slider');
 const progress = player.querySelector('.progress');
 const progressBar = player.querySelector('.progress__filled');
@@ -59,3 +60,8 @@ ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
 
 progress.addEventListener('click', scrub);
 progress.addEventListener('mousemove', (event) => event.buttons === 1 && scrub(event));
+
+// Specific event for rewind button
+rewindButton.addEventListener('click', () => {
+  video.currentTime -= 10; // Rewind 10 seconds
+});
